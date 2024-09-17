@@ -8,18 +8,23 @@ public class MainMenu : MonoBehaviour
   private Vector3 startingPosition;
   private Rigidbody2D rigidBody;
 
-    void Start()
+  void Start()
+  {
+    rigidBody = GetComponent<Rigidbody2D>();
+    startingPosition = transform.position;
+  }
+
+  void Update()
+  {
+    if (transform.position.y <= FALL_LIMIT)
     {
-      rigidBody = GetComponent<Rigidbody2D>();
-      startingPosition = transform.position;
+      transform.position = startingPosition;
+      rigidBody.velocity = Vector2.zero;
     }
 
-    void Update()
+    if (Input.GetKeyDown(KeyCode.Return))
     {
-        if (transform.position.y <= FALL_LIMIT)
-        {
-            transform.position = startingPosition;
-            rigidBody.velocity = Vector2.zero;
-        }
+      UnityEngine.SceneManagement.SceneManager.LoadScene("LevelOne");
     }
+  }
 }
