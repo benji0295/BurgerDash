@@ -156,8 +156,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 100}
-  m_SizeDelta: {x: 900.2819, y: 98.7337}
+  m_AnchoredPosition: {x: 0, y: 145}
+  m_SizeDelta: {x: 1079.9419, y: 139.3021}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &212856115
 MonoBehaviour:
@@ -181,8 +181,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Burger Dash
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 80ad9330e959d45deaddfc91741added, type: 2}
+  m_sharedMaterial: {fileID: 2819472492131051728, guid: 80ad9330e959d45deaddfc91741added, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -206,13 +206,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 150
-  m_fontSizeBase: 150
+  m_fontSize: 225
+  m_fontSizeBase: 225
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -1568,7 +1568,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -100}
+  m_AnchoredPosition: {x: 0, y: -135}
   m_SizeDelta: {x: 900.2819, y: 98.7337}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1523167588
@@ -1595,8 +1595,8 @@ MonoBehaviour:
 
     bs12253n@pace.edu'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 80ad9330e959d45deaddfc91741added, type: 2}
+  m_sharedMaterial: {fileID: 2819472492131051728, guid: 80ad9330e959d45deaddfc91741added, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1620,13 +1620,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 75
+  m_fontSizeBase: 75
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -1729,8 +1729,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Press Enter To Continue
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 80ad9330e959d45deaddfc91741added, type: 2}
+  m_sharedMaterial: {fileID: 2819472492131051728, guid: 80ad9330e959d45deaddfc91741added, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1760,7 +1760,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -2266,6 +2266,60 @@ PrefabInstance:
     - target: {fileID: 1109783267073021820, guid: 7b108d2df848740769d0ff3383299837, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2435390746406238607, guid: 7b108d2df848740769d0ff3383299837, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1079.9419
+      objectReference: {fileID: 0}
+    - target: {fileID: 2435390746406238607, guid: 7b108d2df848740769d0ff3383299837, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 139.3021
+      objectReference: {fileID: 0}
+    - target: {fileID: 2435390746406238607, guid: 7b108d2df848740769d0ff3383299837, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2435390746406238607, guid: 7b108d2df848740769d0ff3383299837, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 145
+      objectReference: {fileID: 0}
+    - target: {fileID: 3745035816178108600, guid: 7b108d2df848740769d0ff3383299837, type: 3}
+      propertyPath: m_text
+      value: 'Ben Smith
+
+        bs12253n@pace.edu'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3745035816178108600, guid: 7b108d2df848740769d0ff3383299837, type: 3}
+      propertyPath: m_fontSize
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 3745035816178108600, guid: 7b108d2df848740769d0ff3383299837, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3745035816178108600, guid: 7b108d2df848740769d0ff3383299837, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 4303370185741758427, guid: 7b108d2df848740769d0ff3383299837, type: 3}
+      propertyPath: m_fontSize
+      value: 225
+      objectReference: {fileID: 0}
+    - target: {fileID: 4303370185741758427, guid: 7b108d2df848740769d0ff3383299837, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4303370185741758427, guid: 7b108d2df848740769d0ff3383299837, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 225
+      objectReference: {fileID: 0}
+    - target: {fileID: 5817101398465906973, guid: 7b108d2df848740769d0ff3383299837, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -135
+      objectReference: {fileID: 0}
+    - target: {fileID: 6607778693305360649, guid: 7b108d2df848740769d0ff3383299837, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6716184623961633506, guid: 7b108d2df848740769d0ff3383299837, type: 3}
       propertyPath: m_Name
