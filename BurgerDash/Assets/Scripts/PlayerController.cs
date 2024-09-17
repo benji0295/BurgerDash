@@ -15,8 +15,10 @@ public class PlayerController : MonoBehaviour
   private UnityEngine.Vector3 startingPosition;
   private Rigidbody2D rigidBody;
   private bool isJumping;
-  private int score;
+  private int totalScore;
+  private int levelScore;
   private int lives;
+  private SpriteRenderer spriteRenderer;
 
   public LayerMask groundLayer;
   public TMP_Text scoreText;
@@ -25,9 +27,13 @@ public class PlayerController : MonoBehaviour
   private void Start()
   {
     rigidBody = GetComponent<Rigidbody2D>();
+    spriteRenderer = GetComponent<SpriteRenderer>();
+
     startingPosition = transform.position;
     isJumping = false;
-    score = 0;
+
+    totalScore = 0;
+    levelScore = 0;
     lives = 3;
   }
 
@@ -47,6 +53,16 @@ public class PlayerController : MonoBehaviour
 
     // Horizontal movement input
     movement.x = Input.GetAxis("Horizontal");
+
+    // Flip sprite based on movement direction
+    if (movement.x < 0)
+    {
+      spriteRenderer.flipX = true;
+    }
+    else if (movement.x > 0)
+    {
+      spriteRenderer.flipX = false;
+    }
 
     //UnityEngine.Vector2 bottomOfCharacter = new UnityEngine.Vector2(transform.position.x, transform.position.y - 0.5f);
     //UnityEngine.Vector2 groundHitBoxDimensions = new UnityEngine.Vector2(0.8f, 0.1f);
@@ -72,8 +88,9 @@ public class PlayerController : MonoBehaviour
     if (collision.CompareTag("Burger"))
     {
       Destroy(collision.gameObject);
-      score++;
-      scoreText.text = "Score: " + score;
+      totalScore++;
+      levelScore++;
+      scoreText.text = "Score: " + totalScore;
     }
     if (collision.CompareTag("Enemy"))
     {
@@ -87,9 +104,23 @@ public class PlayerController : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene("LoseScreen");
       }
     }
-    if (collision.CompareTag("Door") && score >= 4)
+    if (collision.CompareTag("Door") && levelScore >= 4)
     {
-      UnityEngine.SceneManagement.SceneManager.LoadScene("LevelTwo");
+      LoadNextLevel();
+    }
+  }
+  private void LoadNextLevel()
+  {
+    int currentSceneIndex = UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex;
+
+    if (currentSceneIndex + 1 < 4)
+    {
+      UnityEngine.SceneManagement.SceneManager.LoadScene(currentSceneIndex + 1);
+      levelScore = 0;
+    }
+    else
+    {
+      UnityEngine.SceneManagement.SceneManager.LoadScene("WinScreen");
     }
   }
 }

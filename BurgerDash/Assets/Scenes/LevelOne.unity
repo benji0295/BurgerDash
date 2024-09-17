@@ -904,7 +904,7 @@ GameObject:
   - component: {fileID: 853855105}
   - component: {fileID: 853855104}
   m_Layer: 0
-  m_Name: Fridge
+  m_Name: Door
   m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
