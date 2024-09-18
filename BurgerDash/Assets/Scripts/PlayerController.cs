@@ -18,15 +18,20 @@ public class PlayerController : MonoBehaviour
   private int levelScore;
   private int lives;
   private SpriteRenderer spriteRenderer;
+  private AudioSource audioSource;
 
   public LayerMask groundLayer;
   public TMP_Text scoreText;
   public TMP_Text livesText;
+  public AudioClip jumpSound;
+  public AudioClip collectSound;
+  public AudioClip hitSound;
 
   private void Start()
   {
     rigidBody = GetComponent<Rigidbody2D>();
     spriteRenderer = GetComponent<SpriteRenderer>();
+    audioSource = GetComponent<AudioSource>();
 
     startingPosition = transform.position;
     isJumping = false;
@@ -74,6 +79,7 @@ public class PlayerController : MonoBehaviour
     if (Input.GetButtonDown("Jump") && isGrounded)
     {
       isJumping = true;
+      audioSource.PlayOneShot(jumpSound);
     }
   }
   private void FixedUpdate()
@@ -90,6 +96,7 @@ public class PlayerController : MonoBehaviour
   {
     if (collision.CompareTag("Burger"))
     {
+      audioSource.PlayOneShot(collectSound);
       Destroy(collision.gameObject);
       totalScore++;
       levelScore++;
@@ -97,6 +104,7 @@ public class PlayerController : MonoBehaviour
     }
     if (collision.CompareTag("Enemy"))
     {
+      audioSource.PlayOneShot(hitSound);
       transform.position = startingPosition;
       rigidBody.velocity = UnityEngine.Vector2.zero;
       lives--;

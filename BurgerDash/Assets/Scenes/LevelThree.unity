@@ -2493,6 +2493,9 @@ MonoBehaviour:
     m_Bits: 8
   scoreText: {fileID: 409280974}
   livesText: {fileID: 1978981106}
+  jumpSound: {fileID: 8300000, guid: d4aa5b19b3d1d4341a130c1509bf57ee, type: 3}
+  collectSound: {fileID: 8300000, guid: 941eea83fe7774752b15440f6b883a29, type: 3}
+  hitSound: {fileID: 8300000, guid: e34e5de4fb6f0405987dc922e27778b9, type: 3}
 --- !u!61 &1069119572
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4351,7 +4354,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7d986f1dfb069475a8e34e6139929647, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
