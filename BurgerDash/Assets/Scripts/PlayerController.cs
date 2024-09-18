@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
 {
   private const int SPEED = 7;
   private const int JUMP_POWER = 5;
-  private const float FALL_LIMIT = -6.0f;
+  private const float FALL_LIMIT = -10.0f;
   private const float LEFT_LIMIT = -10.0f;
   private UnityEngine.Vector2 movement;
   private UnityEngine.Vector3 startingPosition;
