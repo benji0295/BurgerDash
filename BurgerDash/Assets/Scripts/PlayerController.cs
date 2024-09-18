@@ -10,7 +10,6 @@ public class PlayerController : MonoBehaviour
   private const int SPEED = 7;
   private const int JUMP_POWER = 5;
   private const float FALL_LIMIT = -10.0f;
-  private const float LEFT_LIMIT = -10.0f;
   private UnityEngine.Vector2 movement;
   private UnityEngine.Vector3 startingPosition;
   private Rigidbody2D rigidBody;
@@ -44,11 +43,13 @@ public class PlayerController : MonoBehaviour
     {
       transform.position = startingPosition;
       rigidBody.velocity = UnityEngine.Vector2.zero;
-    }
-    if (transform.position.x <= LEFT_LIMIT)
-    {
-      transform.position = startingPosition;
-      rigidBody.velocity = UnityEngine.Vector2.zero;
+      lives--;
+      livesText.text = "Lives: " + lives;
+
+      if (lives == 0)
+      {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("LoseScreen");
+      }
     }
 
     // Horizontal movement input
@@ -64,10 +65,12 @@ public class PlayerController : MonoBehaviour
       spriteRenderer.flipX = false;
     }
 
+    // Establish grounded state
     UnityEngine.Vector2 bottomOfCharacter = new UnityEngine.Vector2(transform.position.x, transform.position.y - 1f);
     UnityEngine.Vector2 groundHitBoxDimensions = new UnityEngine.Vector2(0.8f, 0.1f);
     bool isGrounded = Physics2D.OverlapBox(bottomOfCharacter, groundHitBoxDimensions, 0, groundLayer);
 
+    // Jump input
     if (Input.GetButtonDown("Jump") && isGrounded)
     {
       isJumping = true;
@@ -104,23 +107,24 @@ public class PlayerController : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene("LoseScreen");
       }
     }
-    if (collision.CompareTag("Door") && levelScore >= 4)
+    if (collision.CompareTag("Door"))
     {
-      LoadNextLevel();
-    }
-  }
-  private void LoadNextLevel()
-  {
-    int currentSceneIndex = UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex;
-
-    if (currentSceneIndex + 1 < 4)
-    {
-      UnityEngine.SceneManagement.SceneManager.LoadScene(currentSceneIndex + 1);
-      levelScore = 0;
-    }
-    else
-    {
-      UnityEngine.SceneManagement.SceneManager.LoadScene("WinScreen");
+      if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "LevelOne" && levelScore == 4)
+      {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("LevelTwo");
+      }
+      else if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "LevelTwo" && levelScore == 4)
+      {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("LevelThree");
+      }
+      else if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "LevelThree" && levelScore == 6)
+      {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("WinScreen");
+      }
+      else
+      {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("WinScreen");
+      }
     }
   }
 }
