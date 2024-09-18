@@ -64,11 +64,11 @@ public class PlayerController : MonoBehaviour
       spriteRenderer.flipX = false;
     }
 
-    //UnityEngine.Vector2 bottomOfCharacter = new UnityEngine.Vector2(transform.position.x, transform.position.y - 0.5f);
-    //UnityEngine.Vector2 groundHitBoxDimensions = new UnityEngine.Vector2(0.8f, 0.1f);
-    //bool isGrounded = Physics2D.OverlapBox(bottomOfCharacter, groundHitBoxDimensions, 0, groundLayer);
+    UnityEngine.Vector2 bottomOfCharacter = new UnityEngine.Vector2(transform.position.x, transform.position.y - 1f);
+    UnityEngine.Vector2 groundHitBoxDimensions = new UnityEngine.Vector2(0.8f, 0.1f);
+    bool isGrounded = Physics2D.OverlapBox(bottomOfCharacter, groundHitBoxDimensions, 0, groundLayer);
 
-    if (Input.GetButtonDown("Jump")) //&& isGrounded)
+    if (Input.GetButtonDown("Jump") && isGrounded)
     {
       isJumping = true;
     }
