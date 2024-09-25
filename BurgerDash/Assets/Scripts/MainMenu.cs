@@ -22,7 +22,7 @@ public class MainMenu : MonoBehaviour
       rigidBody.velocity = Vector2.zero;
     }
 
-    if (Input.GetKeyDown(KeyCode.Return))
+    if (Input.anyKeyDown)
     {
       UnityEngine.SceneManagement.SceneManager.LoadScene("LevelOne");
     }

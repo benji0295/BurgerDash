@@ -22,7 +22,7 @@ public class WinScreen : MonoBehaviour
       rigidBody.velocity = Vector2.zero;
     }
 
-    if (Input.GetKeyDown(KeyCode.Space))
+    if (Input.anyKeyDown)
     {
       UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
     }
