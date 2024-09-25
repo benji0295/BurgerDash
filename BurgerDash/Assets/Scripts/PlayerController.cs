@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Numerics;
 using System.Runtime.CompilerServices;
 using TMPro;
+using UnityEditor.Build.Content;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -14,9 +15,6 @@ public class PlayerController : MonoBehaviour
   private UnityEngine.Vector3 startingPosition;
   private Rigidbody2D rigidBody;
   private bool isJumping;
-  private int totalScore;
-  private int levelScore;
-  private int lives;
   private SpriteRenderer spriteRenderer;
   private AudioSource audioSource;
 
@@ -36,31 +34,27 @@ public class PlayerController : MonoBehaviour
     startingPosition = transform.position;
     isJumping = false;
 
-    totalScore = 0;
-    levelScore = 0;
-    lives = 3;
+    livesText.text = "Lives: " + GameManager.gameManager.lives;
+    scoreText.text = "Score: " + GameManager.gameManager.score;
   }
 
   private void Update()
   {
-    // Reset to beginning if player falls off the map
     if (transform.position.y <= FALL_LIMIT)
     {
       transform.position = startingPosition;
       rigidBody.velocity = UnityEngine.Vector2.zero;
-      lives--;
-      livesText.text = "Lives: " + lives;
+      GameManager.gameManager.lives--;
+      livesText.text = "Lives: " + GameManager.gameManager.lives;
+      scoreText.text = "Score: " + GameManager.gameManager.score;
 
-      if (lives == 0)
+      if (GameManager.gameManager.lives == 0)
       {
         UnityEngine.SceneManagement.SceneManager.LoadScene("LoseScreen");
       }
     }
-
-    // Horizontal movement input
     movement.x = Input.GetAxis("Horizontal");
 
-    // Flip sprite based on movement direction
     if (movement.x < 0)
     {
       spriteRenderer.flipX = true;
@@ -70,12 +64,10 @@ public class PlayerController : MonoBehaviour
       spriteRenderer.flipX = false;
     }
 
-    // Establish grounded state
     UnityEngine.Vector2 bottomOfCharacter = new UnityEngine.Vector2(transform.position.x, transform.position.y - 1f);
     UnityEngine.Vector2 groundHitBoxDimensions = new UnityEngine.Vector2(0.8f, 0.1f);
     bool isGrounded = Physics2D.OverlapBox(bottomOfCharacter, groundHitBoxDimensions, 0, groundLayer);
 
-    // Jump input
     if (Input.GetButtonDown("Jump") && isGrounded)
     {
       isJumping = true;
@@ -98,34 +90,33 @@ public class PlayerController : MonoBehaviour
     {
       audioSource.PlayOneShot(collectSound);
       Destroy(collision.gameObject);
-      totalScore++;
-      levelScore++;
-      scoreText.text = "Score: " + totalScore;
+      GameManager.gameManager.score++;
+      scoreText.text = "Score: " + GameManager.gameManager.score;
     }
     if (collision.CompareTag("Enemy"))
     {
       audioSource.PlayOneShot(hitSound);
       transform.position = startingPosition;
       rigidBody.velocity = UnityEngine.Vector2.zero;
-      lives--;
-      livesText.text = "Lives: " + lives;
+      GameManager.gameManager.lives--;
+      livesText.text = "Lives: " + GameManager.gameManager.lives;
 
-      if (lives == 0)
+      if (GameManager.gameManager.lives == 0)
       {
         UnityEngine.SceneManagement.SceneManager.LoadScene("LoseScreen");
       }
     }
     if (collision.CompareTag("Door"))
     {
-      if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "LevelOne" && levelScore == 4)
+      if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "LevelOne" && GameManager.gameManager.score == 4)
       {
         UnityEngine.SceneManagement.SceneManager.LoadScene("LevelTwo");
       }
-      else if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "LevelTwo" && levelScore == 4)
+      else if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "LevelTwo" && GameManager.gameManager.score == 8)
       {
         UnityEngine.SceneManagement.SceneManager.LoadScene("LevelThree");
       }
-      else if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "LevelThree" && levelScore == 6)
+      else if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "LevelThree" && GameManager.gameManager.score == 14)
       {
         UnityEngine.SceneManagement.SceneManager.LoadScene("WinScreen");
       }
